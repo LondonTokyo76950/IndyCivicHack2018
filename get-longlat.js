@@ -8,6 +8,7 @@ function getUrlVars() {
 
 function getlocation() {
     var address = '2605 East 25th Street, Indianapolis, IN 46218';
+    var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ 'address': address }, function (results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
         latitude = results[0].geometry.location.lat();
