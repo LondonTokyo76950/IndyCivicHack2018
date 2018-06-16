@@ -2,6 +2,7 @@ function getUrlVars() {
     var vars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
         vars[key] = value;
+        getlocation();
     });
     return vars;
 }
@@ -13,10 +14,10 @@ function getlocation() {
     if (status == google.maps.GeocoderStatus.OK) {
         latitude = results[0].geometry.location.lat();
         longitude = results[0].geometry.location.lng();
-        alert("Latitude: " + latitude + "\nLongitude: " + longitude);
-        cont(latitude, longitude, locations);
-        var div = document.getElementById("coordinates");
-        div.textContent = latitude;
+        var div1 = document.getElementById("latitude");
+        div1.textContent = latitude;
+        var div2 = document.getElementById("longitude");
+        div2.textContent = longitude;
     } else {
         alert("Request failed.")
     }
