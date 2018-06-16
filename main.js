@@ -17,12 +17,12 @@ function initMap() {
 	};
 
 	var sheridan = {
-		info: '<strong>Chipotle on Sheridan</strong><br>\r\
-					6600 N Sheridan Rd<br> Chicago, IL 60626<br>\
-					<a href="https://goo.gl/maps/QGUrqZPsYp92">Get Directions</a>',
-		lat: 42.002707,
-		long: -87.661236
-	};
+		info: '<strong>Edna Martin Christian Center</strong><br>\r\
+                2605 East 25th Street<br> Indianapolis, IN 46218<br>\
+				<a href="https://goo.gl/maps/QGUrqZPsYp92">Get Directions</a>',
+		lat: 39.8029,
+        long: -86.11894
+    };
 
 	var locations = [
       [broadway.info, broadway.lat, broadway.long, 0],
@@ -32,9 +32,8 @@ function initMap() {
 
     var latitude;
     var longitude;
-    var zipcode = '10706';
     var geocoder = new google.maps.Geocoder();
-    var address = zipcode;
+    var address = '2605 East 25th Street, Indianapolis, IN 46218';
     geocoder.geocode({ 'address': address }, function (results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
         latitude = results[0].geometry.location.lat();
