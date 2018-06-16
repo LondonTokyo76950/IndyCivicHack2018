@@ -2,6 +2,8 @@ import math
 import csv
 from flask import Flask, jsonify, request, abort
 import json
+import requests
+from bs4 import BeautifulSoup
 app = Flask(__name__)
 
 def distance(xi,xii,yi,yii):
@@ -12,6 +14,20 @@ def distance(xi,xii,yi,yii):
 @app.route("/api/hello")
 def hello_world():
     return "Hello, World!"
+
+@app.route("/api/getlonglat", methods = ['GET'])
+def getlonglat():
+    address = request.args.get('address', None)
+    if address is None:
+        abort(404)
+    url = "http://sgatreasury.rose-hulman.edu/get-longlat.html?address" + address
+    response = requests.get(url)
+    html = response.content
+
+    soup = BeautifulSoup(html, 'html.parser')
+    longitude = soup.find('div', attrs={'id': 'longitude'})
+
+
 
 @app.route("/api/nearbyfood", methods = ['GET'])
 def nearbyfood():
